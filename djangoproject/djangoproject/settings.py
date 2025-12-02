@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import re
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-q7cnogqk&myi0y%bzjfhi072fse2e6k+pktf_s5ml86b1mc+m2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-53r.onrender.com']
+ALLOWED_HOSTS = ['django-53r.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'basic'
 ]
 
 MIDDLEWARE = [
@@ -47,6 +49,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'basic.middleware.sscMiddleware',
+    'basic.middleware.MedicalfitMiddleware',
+    'basic.middleware.AgeMiddleware',
+    'basic.middleware.UsernameMiddleware',
+    'basic.middleware.EmailMiddleware',
+    'basic.middleware.PasswordMiddleware'
 ]
 
 ROOT_URLCONF = 'djangoproject.urls'
@@ -74,8 +82,17 @@ WSGI_APPLICATION = 'djangoproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "53_r",
+        'USER':'root',
+        'PASSWORD':'Krishna@2003',
+        'HOST':"127.0.0.1",
+        'PORT':"3306",
+        'OPTIONS':{
+             'charset':'utf8mb4',
+             'init_command':"SET sql_mode='STRICT_TRANS_TABLES'"
+             }
+
     }
 }
 

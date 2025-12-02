@@ -17,9 +17,31 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from basic.views import func
+from django.urls import path
+from basic.views import sample,sample1,sampleinfo,dynamicResponse,add,health,addStudent,job1,job2,signUp,check,login,change_password
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('fun/',func)
+    path('fun/',func),
+    path('greet/',sample),
+    path('53r',sample1),
+    path('info',sampleinfo),
+    path('dynamic/',dynamicResponse),
+    path('add/',add),
+    path('health/',health),
+    path('student/',addStudent),
+    path('job1/',job1),
+    path('job2/',job2),
+    path('signup/',signUp),
+    path('check/',check),
+    path('login/',login),
+    path('change_password/',change_password)
+    
 
 ]
+
+
+#get,post,put,delete
+
