@@ -127,7 +127,7 @@ def login(request):
         try:
             user=Users.objects.get(username=username)
             issued_time=datetime.now(ZoneInfo("Asia/Kolkata"))
-            expired_time=issued_time+timedelta(minutes=25)
+            expired_time=issued_time+timedelta(minutes=1)
             if check_password(password,user.password):
                 # token="a json web token"
                 payload={"username":user.username,"email":user.email,"id":user.id,"exp":expired_time}
@@ -175,3 +175,17 @@ def check(request):
     x=check_password(ipdata.get("ip"),hashed)
     print(x)
     return JsonResponse({"status":"success","data":x},status=200)
+
+@csrf_exempt
+def getAllUsers(request):
+    if request.method=="GET":
+        users=list(Users.objects.values())
+        print(request.token_data,"token data in view")
+        print(request.token_data.get("username"))
+        print(users,"users'list")
+        for user in users:
+            if user["username"] == request.token_data.get("username"):
+                return JsonResponse({"status":"success","loggedinuser":request.token_data,"data":users},status=200)  
+        else:    
+            return JsonResponse({"error":"Unauthorized access"},status=401)
+    

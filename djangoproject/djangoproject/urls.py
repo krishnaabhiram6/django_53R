@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from basic.views import func
 from django.urls import path
-from basic.views import sample,sample1,sampleinfo,dynamicResponse,add,health,addStudent,job1,job2,signUp,check,login,change_password
+from basic.views import sample,sample1,sampleinfo,dynamicResponse,add,health,addStudent,job1,job2,signUp,check,login,change_password,getAllUsers
 
 
 
@@ -37,7 +37,8 @@ urlpatterns = [
     path('signup/',signUp),
     path('check/',check),
     path('login/',login),
-    path('change_password/',change_password)
+    path('change_password/',change_password),
+    path('users/',getAllUsers)
     
 
 ]

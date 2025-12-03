@@ -54,7 +54,8 @@ MIDDLEWARE = [
     'basic.middleware.AgeMiddleware',
     'basic.middleware.UsernameMiddleware',
     'basic.middleware.EmailMiddleware',
-    'basic.middleware.PasswordMiddleware'
+    'basic.middleware.PasswordMiddleware',
+    'basic.middleware.Authenticate_middleware'
 ]
 
 ROOT_URLCONF = 'djangoproject.urls'
